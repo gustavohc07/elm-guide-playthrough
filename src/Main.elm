@@ -18,7 +18,7 @@ main =
 -- MODEL
 -- Models are our application data? How are we passing it throught the other functions?
 -- Models "are the state of your application". So probably the initial state of our data.
--- In this case init = 0 is the initial state. So our Model is an integer 0.
+-- In this case init = 0 is the initial state. So our Model is an integer 0. (not Model... Our initial state defined by our init variable is 0)
 type alias Model = Int
 
 init : Model

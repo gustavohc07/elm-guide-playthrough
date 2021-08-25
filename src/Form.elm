@@ -13,7 +13,7 @@ main =
 -- MODEL
 
 {-|
-  We're currently calling it 'Model' but it can me any other suitable name. Just following the guide here.
+  We're currently calling it 'Model' but it can be any other suitable name. Just following the guide here.
   When building models, start with one field/data at a time. Work all the way through the view and then
   continue adding new fields/data. 
 |-}
@@ -57,6 +57,8 @@ view model =
     , viewInput "password" "Password" model.password Password
     , viewInput "password" "Confirm Password" model.confirmPassword ConfirmPassword
     , viewValidation model
+    , viewLengthValidation model
+    , viewCharacterRestriction model
     ]
 
 
@@ -76,7 +78,20 @@ viewValidation model =
   if model.password == model.confirmPassword then
     div [ style "color" "green" ] [ text "OK" ]
   else
-    div [style "color" "red" ] [ text "Passwords do not match!"]
+    div [style "color" "red" ] [ text "Passwords do not match!" ]
+
+viewLengthValidation : Model -> Html msg
+viewLengthValidation model =
+  if String.length model.password > 8 then
+    div [ style "color" "green" ] [ text "Length: OK" ]
+  else
+    div [ style "color" "red" ] [ text "Length: Password must be greater than 8 characters" ]
+
+
+-- TODO: Restrict password to contain at least 1 upper case letter, 1 lower case letter and 1 number. A 
+-- Challenge would be to also verify if the password contain one special character.
+-- Doing that challenge later since I saw some solutions and all of them use some sort of synthax that
+-- I don't know yet and quite not understand.
 
 
 -- If you are looking at that repository and see a couple of questions and right after you got the answer to it

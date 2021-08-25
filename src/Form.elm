@@ -58,7 +58,6 @@ view model =
     , viewInput "password" "Confirm Password" model.confirmPassword ConfirmPassword
     , viewValidation model
     , viewLengthValidation model
-    , viewCharacterRestriction model
     ]
 
 
